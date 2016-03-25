@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<ui:composition template="/WEB-INF/modelo.xhtml">
+		<h:outputLabel value="Menu:" />
+		<ui:define name="corpo">
+			
+			<h:panelGrid columns="1">
+				<h:commandLink value="Livros" action="livro?faces-redirect=true" />
+				<h:commandLink value="Pessoas" action="pessoa?faces-redirect=true" />
+				<h:commandLink value="Emprestimos" action="emprestimo?faces-redirect=true" />
+			</h:panelGrid>
+			
+		</ui:define>
+	</ui:composition>
+
+</html>

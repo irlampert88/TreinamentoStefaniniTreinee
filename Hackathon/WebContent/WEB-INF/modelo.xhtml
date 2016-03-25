@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<h:head>
+		<title>Stefanini Hackateca</title>
+	</h:head>
+	
+	<h:body>
+
+		<div id="cabecalho">
+			<h:graphicImage library="imagens" name="stefanini.png" id="logoStefanini" />
+		</div>
+
+		<br/><br/>
+		<h:form> 
+			<h:commandLink value="Menu principal" action="principal?faces-redirect=true"/>
+		</h:form>
+
+		<div id="conteudo">
+			<h:form>
+				<ui:insert name="corpo" />
+			</h:form>
+		</div>
+
+		<!-- <div id="rodape">Copyright 2014. Todos os Direitos reservados a Stefanini Hackateca</div> -->
+		
+	</h:body>
+	
+</html>
+

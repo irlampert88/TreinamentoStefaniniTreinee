@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<ui:composition template="/WEB-INF/modelo.xhtml">
+		<ui:define name="corpo">
+			<h2>Manutenção de Livros</h2>
+
+			<h:panelGrid columns="2" id="livro-formulario" styleClass="campos">
+				<h:outputLabel value="Nome:" for="nome" />
+				<h:inputText id="nome" required="true" value="#{livroManagedBean.livro.nome}" />
+				
+				<h:outputLabel value="Autor:" for="autor" />
+				<h:inputText id="autor" required="true" value="#{livroManagedBean.livro.autor}" />
+				
+				<h:outputLabel value="Páginas:" for="paginas" />
+				<h:inputText id="paginas" required="true" value="#{livroManagedBean.livro.paginas}">
+					<f:convertNumber integerOnly="true" />
+				</h:inputText>
+
+				<h:commandButton value="Inserir" rendered="#{!livroManagedBean.livroParaEdicao()}" action="#{livroManagedBean.inserir()}"/>
+				<h:commandButton value="Alterar" rendered="#{livroManagedBean.livroParaEdicao()}" action="#{livroManagedBean.alterar()}"/>
+			</h:panelGrid>
+			
+			<h:dataTable id="listaDeLivros" >
+				<h:column>
+					<f:facet name="Nome"/>
+					<h:outputLabel value="Teste"/> 
+				</h:column>
+				
+				<h:column>
+					<f:facet name="Autor"/>
+					<h:outputLabel value="Teste 2"/>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="Páginas"/>
+					<h:outputLabel value="Teste 3"/>
+				</h:column>
+			</h:dataTable>
+			
+		</ui:define>
+	</ui:composition>
+
+</html>
