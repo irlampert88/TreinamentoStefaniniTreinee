@@ -25,14 +25,14 @@ public class LivroManagedBean {
 	
 	public void salvar() {
 		servico.salvar(getLivro());
-		Mensageiro.addMensagemInformativa("Parabéns!", "Livro salvo com sucesso!");
+		Mensageiro.notificaInformacao("Parabéns!", "Livro salvo com sucesso!");
 		carregaListaDeLivros();
 		limpar();
 	}
 	
 	public void deletar(Livro livro) {
 		servico.deletar(livro);
-		Mensageiro.addMensagemInformativa("Parabéns!", "Livro deletado com sucesso!");
+		Mensageiro.notificaInformacao("Parabéns!", "Livro deletado com sucesso!");
 		carregaListaDeLivros();
 		limpar();
 	}
