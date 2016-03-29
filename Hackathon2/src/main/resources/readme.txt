@@ -1,0 +1,1 @@
+Recursos (Configs, Imagens etc) do Projeto
