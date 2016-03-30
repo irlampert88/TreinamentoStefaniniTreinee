@@ -22,4 +22,8 @@ public final class RepositorioDeVendedores
 				.findFirst().get();
 	}
 	
+	public long quantidadeDeVendedores() {
+		return getDados().stream().distinct().count();
+	}
+	
 }

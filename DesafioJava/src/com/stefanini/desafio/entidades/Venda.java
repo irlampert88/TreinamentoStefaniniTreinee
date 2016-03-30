@@ -9,7 +9,7 @@ package com.stefanini.desafio.entidades;
 public class Venda {
 
 	private final String id;
-	private Vendedor vendedor;
+	private final Vendedor vendedor;
 	private final ListaDeItensDaVenda listaDeItens;
 	
 	public Venda(String id, Vendedor vendedor) {
@@ -28,6 +28,10 @@ public class Venda {
 	
 	public void adicionaItem(ItemDaVenda itemDaVenda) {
 		listaDeItens.adicionaItem(itemDaVenda);
+	}
+	
+	public Double getValorTotalDaVenda() {
+		return listaDeItens.getValorTotal();
 	}
 	
 }
