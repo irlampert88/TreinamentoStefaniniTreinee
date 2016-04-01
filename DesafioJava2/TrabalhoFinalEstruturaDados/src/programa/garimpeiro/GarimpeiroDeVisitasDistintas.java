@@ -5,7 +5,7 @@ import programa.entidades.Data;
 import programa.entidades.IpVisitante;
 import programa.util.FormatadorDeResultadoDoGarimpo;
 
-public class GarimpeiroDeVisitasDistintas 
+public final class GarimpeiroDeVisitasDistintas 
 	extends GarimpeiroAbstrato {
 
 	/** DESCRIÇÃO:

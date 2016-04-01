@@ -11,7 +11,7 @@ import java.util.List;
 
 import programa.util.Strings;
 
-public class LeitorDeArquivo {
+public final class LeitorDeArquivo {
 
 	private final String caminhoDoArquivo;
 	private final String nomeDoArquivo;
@@ -23,32 +23,27 @@ public class LeitorDeArquivo {
 		validarCaminhoInformado(caminhoDoArquivo, nomeDoArquivo);
 	}
 
-	public List<String> lerConteudo() {
+	public final List<String> lerConteudo() {
 		try {
 			return conteudoDoArquivo(caminhoDoArquivo, nomeDoArquivo);
-
 		} catch (Exception e) {
-			e.printStackTrace();
 			return Collections.emptyList();
 		}
 	}
 
 	private List<String> conteudoDoArquivo(String caminhoDoArquivo, String nomeDoArquivo) throws IOException {
 		Path localDoArquivo = Paths.get(caminhoDoArquivo, nomeDoArquivo);
-		
 		return Files.readAllLines(localDoArquivo, Charset.defaultCharset());
 	}
 
 	private void validarCaminhoInformado(String caminhoDoArquivo, String nomeDoArquivo) {
-		if (Strings.estaVazioOuNulo(caminhoDoArquivo) || Strings.estaVazioOuNulo(nomeDoArquivo)) {
+		if (Strings.estaVazioOuNulo(caminhoDoArquivo) || Strings.estaVazioOuNulo(nomeDoArquivo)) 
 			throw new IllegalArgumentException("Caminho do arquivo informado está vazio ou é nulo. Informe um caminho válido.");
-		}
 		
 		String nomeDoArquivoCompleto = caminhoDoArquivo + File.separator + nomeDoArquivo;
 		File arquivoFisico = new File(nomeDoArquivoCompleto);
-		if (!arquivoFisico.exists()) {
+		if (!arquivoFisico.exists()) 
 			throw new IllegalArgumentException("Arquivo " + nomeDoArquivoCompleto + " não encontrado.");
-		}
 	}
 	
 }

@@ -3,7 +3,7 @@ package programa.util;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class Cronometro {
+public final class Cronometro {
 
 	private static final long TEMPO_INVALIDO = -1;
 	
@@ -13,26 +13,22 @@ public class Cronometro {
 	public Cronometro() {
 	}
 
-	public void iniciar() {
-		if (jaFoiIniciado()) {
+	public final void iniciar() {
+		if (jaFoiIniciado())
 			throw new IllegalArgumentException("Cronômetro já foi iniciado.");
-		}
 		
-		if (jaFoiEncerrado()) {
+		if (jaFoiEncerrado()) 
 			throw new IllegalArgumentException("Cronômetro já foi encerrado.");
-		}
 		
 		tempoInicial = pegarTempoAtual("Início");
 	}
 	
-	public void encerrar() {
-		if (!jaFoiIniciado()) {
+	public final void encerrar() {
+		if (!jaFoiIniciado())
 			throw new IllegalArgumentException("Inicie o cronômetro antes de encerrar.");
-		}
 		
-		if (jaFoiEncerrado()) {
+		if (jaFoiEncerrado())
 			throw new IllegalArgumentException("Cronômetro já foi encerrado.");
-		}
 		
 		tempoFinal = pegarTempoAtual("Fim");
 		imprimirDuracao();
@@ -43,17 +39,12 @@ public class Cronometro {
 	}
 	
 	private void imprimirDuracao() {
-		Calendar quandoIniciou = Calendar.getInstance();
-		quandoIniciou.setTimeInMillis(tempoInicial);
-		imprimirTempo("Iniciou:", quandoIniciou);
-		
-		Calendar quandoTerminou = Calendar.getInstance();
-		quandoTerminou.setTimeInMillis(tempoFinal);
-		imprimirTempo("Terminou:", quandoTerminou);
+		imprimirTempo("Iniciou:", tempoInicial);
+		imprimirTempo("Terminou:", tempoFinal);
 	}
 	
-	private void imprimirTempo(String descricao, Calendar tempo) {
-		Impressora.imprimir(descricao + ": " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss.SSS").format(tempo.getTime()));
+	private void imprimirTempo(String descricao, long tempoEmMilis) {
+		Impressora.imprimir(descricao + ": " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss.SSS").format(tempoEmMilis));
 	}
 
 	private boolean jaFoiEncerrado() {

@@ -5,7 +5,7 @@ import java.util.List;
 
 import programa.garimpeiro.Garimpeiro;
 
-public class MinaDeDados {
+public final class MinaDeDados {
 
 	private final List<String> dadosAGarimpar;
 	private final List<Garimpeiro> listaDeGarimpeiros;
@@ -18,43 +18,37 @@ public class MinaDeDados {
 	}
 
 	private void validarDadosAGarimpar(List<String> dadosAGarimpar) {
-		if (dadosAGarimpar == null || dadosAGarimpar.isEmpty()) {
+		if (dadosAGarimpar == null || dadosAGarimpar.isEmpty())
 			throw new IllegalArgumentException("Dados a garimpar por informações está vazio ou nulo. Informe uma fonde de dados para buscar por dados.");
-		}
 	}
 	
-	public void adicionarGarimpeiro(Garimpeiro garimpeiro) {
-		if (garimpeiro != null) {
+	public final void adicionarGarimpeiro(Garimpeiro garimpeiro) {
+		if (garimpeiro != null)
 			listaDeGarimpeiros.add(garimpeiro);
-		}
 	}
 	
-	public void garimpar() {
+	public final void garimpar() {
 		verificaSePossuiGarimpeirosAdicionados();
 		
-		for (Garimpeiro garimpeiro : listaDeGarimpeiros) {
-			for (String dado : dadosAGarimpar) {
+		listaDeGarimpeiros.forEach(garimpeiro -> {
+			for (String dado : dadosAGarimpar) { 
 				garimpeiro.garimpar(dado);
 			}
-		}
+		});
 	}
 	
-	public int quantidadeDeDadosMinerados() {
+	public final int quantidadeDeDadosMinerados() {
 		return dadosAGarimpar.size();
 	}
 	
-	public void listarInformacoesColetadasDosGarimpeiros() {
+	public final void listarInformacoesColetadasDosGarimpeiros() {
 		verificaSePossuiGarimpeirosAdicionados();
-		
-		for (Garimpeiro garimpeiro : listaDeGarimpeiros) {
-			garimpeiro.listarInformacoesColetadas();
-		}
+		listaDeGarimpeiros.forEach(garimpeiro -> garimpeiro.listarInformacoesColetadas());
 	}
 
 	private void verificaSePossuiGarimpeirosAdicionados() {
-		if (listaDeGarimpeiros == null || listaDeGarimpeiros.isEmpty()) {
+		if (listaDeGarimpeiros == null || listaDeGarimpeiros.isEmpty())
 			throw new IllegalArgumentException("Não foram adicionados Garimpeiros para análise e coleta de informações.");
-		}
 	}
 	
 }

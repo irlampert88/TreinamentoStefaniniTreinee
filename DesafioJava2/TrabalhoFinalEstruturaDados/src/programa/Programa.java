@@ -17,7 +17,7 @@ import programa.util.Impressora;
  * @author Patrick Siqueira da Rosa
  * @author Tales Igor Ebert
  */
-public class Programa {
+public final class Programa {
 
 	private final String localDoArquivo = "C:\\";
 	private final String nomeDoArquivo = "access.log";

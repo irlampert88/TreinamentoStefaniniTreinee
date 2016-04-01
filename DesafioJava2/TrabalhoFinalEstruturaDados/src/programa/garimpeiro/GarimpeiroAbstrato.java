@@ -16,9 +16,8 @@ abstract class GarimpeiroAbstrato
 	}
 	
 	private void validateDescricaoDoGarimpeiro(String descricaoDoGarimpeiro) {
-		if (Strings.estaVazioOuNulo(descricaoDoGarimpeiro)) {
+		if (Strings.estaVazioOuNulo(descricaoDoGarimpeiro)) 
 			throw new IllegalArgumentException("A descrição do Garimpeiro está vazia ou nula. Informe uma descrição válida.");
-		}
 	}
 
 	@Override

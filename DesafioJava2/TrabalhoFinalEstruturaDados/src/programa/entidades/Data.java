@@ -5,12 +5,12 @@ import java.util.concurrent.TimeUnit;
 
 import programa.util.FormatadorDeDatas;
 
-public class Data {
+public final class Data {
 
 	private final Date dataDaLinha;
 	
-	public Data(String dadoBruto) {
-		dataDaLinha = extrairDataDaLinha(dadoBruto);
+	public Data(String linhaBruta) {
+		dataDaLinha = extrairDataDaLinha(linhaBruta);
 	}
 	
 	private Date extrairDataDaLinha(String dadoBruto) {
@@ -26,18 +26,18 @@ public class Data {
 		return FormatadorDeDatas.getInstance().paraDataDoJava(dataBruta);
 	}
 	
-	public String dataFormatada() {
+	public final String dataFormatada() {
 		return FormatadorDeDatas.getInstance().paraStringPtBr(dataDaLinha);
 	}
 	
-	public long diferencaEmMilisegundos(Data dataAComparar) {
+	public final long diferencaEmMilisegundos(Data dataAComparar) {
 		long maiorValor = (dataDaLinha.getTime() > dataAComparar.dataDaLinha.getTime() ? dataDaLinha.getTime() : dataAComparar.dataDaLinha.getTime());
 		long menorValor = (dataDaLinha.getTime() < dataAComparar.dataDaLinha.getTime() ? dataDaLinha.getTime() : dataAComparar.dataDaLinha.getTime());
 		
 		return (maiorValor - menorValor); 
 	}
 	
-	public long diferenteEmMinutos(Data dataAComparar) {
+	public final long diferenteEmMinutos(Data dataAComparar) {
 		return TimeUnit.MILLISECONDS.toMinutes(diferencaEmMilisegundos(dataAComparar));
 	}
 	

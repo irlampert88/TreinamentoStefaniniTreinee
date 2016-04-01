@@ -24,9 +24,8 @@ public enum ConversorDeMes {
 	}
 	
 	public static int retornaNumeroDoMes(String mes) {
-		if (Strings.estaVazioOuNulo(mes)) {
+		if (Strings.estaVazioOuNulo(mes))
 			throw new IllegalArgumentException("O mês informado para busca do número está inválido (vazio ou nulo).");
-		}
 		
 		return valueOf(mes.toUpperCase()).numero;
 	}

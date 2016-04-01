@@ -7,7 +7,6 @@ import java.util.List;
 import programa.entidades.Data;
 import programa.entidades.IntervaloDeDatas;
 import programa.util.FormatadorDeResultadoDoGarimpo;
-import programa.util.OrdenadorDeListas;
 
 public final class GarimpeiroDeMaiorPeriodoSemAcesso 
 	extends GarimpeiroAbstrato {
@@ -26,26 +25,21 @@ public final class GarimpeiroDeMaiorPeriodoSemAcesso
 	}
 	
 	@Override
-	public void garimpar(String dado) {
+	public final void garimpar(String dado) {
 		Data dataDaLinhaAtual = new Data(dado);
 
-		if (dataAnterior != null) {
-			IntervaloDeDatas intervalo = new IntervaloDeDatas(dataAnterior, dataDaLinhaAtual);
-			
-			maioresIntervalos.add(intervalo);
-		}
+		if (dataAnterior != null)
+			maioresIntervalos.add(new IntervaloDeDatas(dataAnterior, dataDaLinhaAtual));
 		
 		dataAnterior = dataDaLinhaAtual;
 	}
 
 	@Override
 	void formatarInformacoesColetadas(FormatadorDeResultadoDoGarimpo formatadorResultados) {
-		List<IntervaloDeDatas> valoresOrdenados = new OrdenadorDeListas<IntervaloDeDatas>(maioresIntervalos)
-				.ordemDecrescente(Comparator.comparingLong(IntervaloDeDatas::diferencaEntreAsDatasEmMilisegundos));
-		
-		for (int count = 0; count < 3; count ++) {
-			formatadorResultados.adicionaInformacao(valoresOrdenados.get(count).retornarDuracaoEPeriodoFormatado());
-		}
+		maioresIntervalos.stream()
+				.sorted(Comparator.comparingLong(IntervaloDeDatas::diferencaEntreAsDatasEmMilisegundos).reversed())
+				.limit(3)
+				.forEach(intervalo -> formatadorResultados.adicionaInformacao(intervalo.retornarDuracaoEPeriodoFormatado()));
 	}
 
 }

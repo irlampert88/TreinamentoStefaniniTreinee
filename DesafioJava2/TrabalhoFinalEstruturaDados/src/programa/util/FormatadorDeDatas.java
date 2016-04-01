@@ -3,7 +3,7 @@ package programa.util;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class FormatadorDeDatas {
+public final class FormatadorDeDatas {
 
 	private final static FormatadorDeDatas instance = new FormatadorDeDatas(); 
 	private final SimpleDateFormat formatacaoDoArquivoDeLog;
@@ -18,11 +18,11 @@ public class FormatadorDeDatas {
 		return instance;
 	}
 
-	public String paraStringPtBr(Date data) {
+	public final String paraStringPtBr(Date data) {
 		return formatadorPadrao.format(data);
 	}
 	
-	public Date paraDataDoJava(String dataEmString) {
+	public final Date paraDataDoJava(String dataEmString) {
 		try {
 			return formatacaoDoArquivoDeLog.parse(dataEmString);
 		} catch (Exception e) {

@@ -1,6 +1,6 @@
 package programa.util;
 
-public class Strings {
+public final class Strings {
 
 	private Strings() {
 	}

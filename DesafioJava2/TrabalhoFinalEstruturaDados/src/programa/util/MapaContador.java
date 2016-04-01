@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MapaContador {
+public final class MapaContador {
 
 	private final Map<String, Double> mapaDeQuantidades; 
 	
@@ -12,11 +12,11 @@ public class MapaContador {
 		mapaDeQuantidades = new HashMap<String, Double>();
 	}
 	
-	public void put(String chave) {
+	public final void put(String chave) {
 		atualizarQuantidade(chave, 1.0);
 	}
 	
-	public void put(String chave, Double valor) {
+	public final void put(String chave, Double valor) {
 		atualizarQuantidade(chave, valor);
 	}
 
@@ -26,19 +26,19 @@ public class MapaContador {
 		mapaDeQuantidades.put(chave, quantidade);
 	}
 	
-	public int quantidadeDeDados() {
+	public final int quantidadeDeDados() {
 		return mapaDeQuantidades.size();
 	}
 	
-	public List<String> retornarValoresEmOrdemCrescente(int quantidadeDeRegistrosARetornar) {
+	public final List<String> retornarValoresEmOrdemCrescente(int quantidadeDeRegistrosARetornar) {
 		return retornarValoresOrdenados(OrdenacaoMapaContador.ASC, quantidadeDeRegistrosARetornar);
 	}
 	
-	public List<String> retornarValoresEmOrdemDecrescente(int quantidadeDeRegistrosARetornar) {
+	public final List<String> retornarValoresEmOrdemDecrescente(int quantidadeDeRegistrosARetornar) {
 		return retornarValoresOrdenados(OrdenacaoMapaContador.DESC, quantidadeDeRegistrosARetornar);
 	}
 
-	private List<String> retornarValoresOrdenados(OrdenacaoMapaContador ordenacao, int quantidadeDeDadosAOrdenarERetornar) {
+	private final List<String> retornarValoresOrdenados(OrdenacaoMapaContador ordenacao, int quantidadeDeDadosAOrdenarERetornar) {
 		return ordenacao.ordenar(mapaDeQuantidades, quantidadeDeDadosAOrdenarERetornar);
 	}
 	
