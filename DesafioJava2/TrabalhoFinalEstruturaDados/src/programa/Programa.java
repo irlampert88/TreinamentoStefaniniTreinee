@@ -38,7 +38,7 @@ public class Programa {
 		adicionarGarimpeirosNaMina(mina);
 		
 		mina.garimpar();
-//		mina.listarInformacoesColetadasDosGarimpeiros();
+		mina.listarInformacoesColetadasDosGarimpeiros();
 
 		imprimirResumo(mina);
 		cronometro.encerrar();	
