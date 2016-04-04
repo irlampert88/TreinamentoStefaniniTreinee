@@ -30,10 +30,8 @@ public final class MinaDeDados {
 	public final void garimpar() {
 		verificaSePossuiGarimpeirosAdicionados();
 		
-		listaDeGarimpeiros.forEach(garimpeiro -> {
-			for (String dado : dadosAGarimpar) { 
-				garimpeiro.garimpar(dado);
-			}
+		dadosAGarimpar.forEach(linha -> {
+			listaDeGarimpeiros.forEach(garimpeiro -> garimpeiro.garimpar(linha));
 		});
 	}
 	
