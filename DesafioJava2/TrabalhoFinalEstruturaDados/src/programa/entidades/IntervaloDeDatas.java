@@ -2,10 +2,10 @@ package programa.entidades;
 
 public final class IntervaloDeDatas {
 
-	private final Data data1;
-	private final Data data2;
+	private final DataDaLinha data1;
+	private final DataDaLinha data2;
 
-	public IntervaloDeDatas(Data data1, Data data2) {
+	public IntervaloDeDatas(DataDaLinha data1, DataDaLinha data2) {
 		this.data1 = data1;
 		this.data2 = data2;
 	}

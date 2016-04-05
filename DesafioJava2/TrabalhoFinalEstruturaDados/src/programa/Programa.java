@@ -11,11 +11,7 @@ import programa.util.Cronometro;
 import programa.util.Impressora;
 
 /**
- *
- * @author Denner Erthal
- * @author Ivan Rafael Lampert
- * @author Patrick Siqueira da Rosa
- * @author Tales Igor Ebert
+ * @author Ivan Lampert
  */
 public final class Programa {
 

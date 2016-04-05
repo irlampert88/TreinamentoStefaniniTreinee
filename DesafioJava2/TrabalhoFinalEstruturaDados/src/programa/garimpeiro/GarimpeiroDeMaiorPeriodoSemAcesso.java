@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import programa.entidades.Data;
+import programa.entidades.DataDaLinha;
 import programa.entidades.IntervaloDeDatas;
 import programa.util.FormatadorDeResultadoDoGarimpo;
 
@@ -16,7 +16,7 @@ public final class GarimpeiroDeMaiorPeriodoSemAcesso
 		ordem decrescente de tamanho
 	 */
 	
-	private Data dataAnterior;
+	private DataDaLinha dataAnterior;
 	private final List<IntervaloDeDatas> maioresIntervalos;
 	
 	public GarimpeiroDeMaiorPeriodoSemAcesso() {
@@ -26,7 +26,7 @@ public final class GarimpeiroDeMaiorPeriodoSemAcesso
 	
 	@Override
 	public final void garimpar(String dado) {
-		Data dataDaLinhaAtual = new Data(dado);
+		DataDaLinha dataDaLinhaAtual = new DataDaLinha(dado);
 
 		if (dataAnterior != null)
 			maioresIntervalos.add(new IntervaloDeDatas(dataAnterior, dataDaLinhaAtual));

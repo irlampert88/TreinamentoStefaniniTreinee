@@ -1,8 +1,8 @@
 package programa.garimpeiro;
 
 import programa.entidades.ContadorDeVisitas;
-import programa.entidades.Data;
-import programa.entidades.IpVisitante;
+import programa.entidades.DataDaLinha;
+import programa.entidades.IpVisitanteDaLinha;
 import programa.util.FormatadorDeResultadoDoGarimpo;
 
 public final class GarimpeiroDeVisitasDistintas 
@@ -14,12 +14,13 @@ public final class GarimpeiroDeVisitasDistintas
 		consecutivo para esse IP. Ou seja, o seguinte trecho de log abaixo mostra três diferentes visitas
 	 */
 	
-	private final ContadorDeVisitas visitas = new ContadorDeVisitas();
+	private final ContadorDeVisitas visitas;
 	
 	public GarimpeiroDeVisitasDistintas() {
 		super("Todas visitas distintas (dentro do intervalo de " + tempoLimiteEmMinutos() + " minutos):");
 		
-		visitas.definirIntervaloLimiteEmMinutos(tempoLimiteEmMinutos());
+		this.visitas = new ContadorDeVisitas();
+		this.visitas.definirIntervaloLimiteEmMinutos(tempoLimiteEmMinutos());
 	}
 
 	private static int tempoLimiteEmMinutos() {
@@ -28,8 +29,8 @@ public final class GarimpeiroDeVisitasDistintas
 	
 	@Override
 	public void garimpar(String dado) {
-		Data dataDaLinhaAtual = new Data(dado);
-		IpVisitante ipVisitanteDaLinhaAtual = new IpVisitante(dado);
+		DataDaLinha dataDaLinhaAtual = new DataDaLinha(dado);
+		IpVisitanteDaLinha ipVisitanteDaLinhaAtual = new IpVisitanteDaLinha(dado);
 
 		visitas.adicionarIpVisitante(ipVisitanteDaLinhaAtual, dataDaLinhaAtual);
 	}

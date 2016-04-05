@@ -5,12 +5,13 @@ import java.util.Map;
 
 public final class ContadorDeVisitas {
 
-	private int intervaloEmMinutos = 30;
-	private final Map<String, Data> visitasFeitas;
+	private int intervaloEmMinutos = 1; // Valor default
+	
+	private final Map<String, DataDaLinha> visitasFeitas;
 	private int visitasDistintas = 0;
 	
 	public ContadorDeVisitas() {
-		visitasFeitas = new HashMap<String, Data>();
+		visitasFeitas = new HashMap<String, DataDaLinha>();
 	}
 	
 	public final void definirIntervaloLimiteEmMinutos(int tempoEmMinutos) {
@@ -26,23 +27,23 @@ public final class ContadorDeVisitas {
 		return "Total de visitas: " + quantidadeDeVisitas;
 	}
 
-	public final void adicionarIpVisitante(IpVisitante ip, Data dataDoIp) {
-		Data dataDaVisita = visitasFeitas.get(ip.getIp());
+	public final void adicionarIpVisitante(IpVisitanteDaLinha ipAtual, DataDaLinha dataDaVisitaAtual) {
+		DataDaLinha dataDaVisitaAnterior = visitasFeitas.get(ipAtual.getIp());
 		
-		if (dataDaVisita == null) 
-			adicionaVisitanteEDataDaVisita(ip, dataDoIp);
+		if (dataDaVisitaAnterior == null) 
+			adicionaVisitanteEDataDaVisita(ipAtual, dataDaVisitaAtual);
 			
 		else
-			if (dataDaVisitaExcedeuDataLimiteDaUltimaVisita(dataDaVisita, dataDoIp))
-				adicionaVisitanteEDataDaVisita(ip, dataDoIp);
+			if (dataDaVisitaExcedeuDataLimiteDaUltimaVisita(dataDaVisitaAnterior, dataDaVisitaAtual))
+				adicionaVisitanteEDataDaVisita(ipAtual, dataDaVisitaAtual);
 	}
 
-	private boolean dataDaVisitaExcedeuDataLimiteDaUltimaVisita(Data dataDaVisita, Data dataDoIp) {
+	private boolean dataDaVisitaExcedeuDataLimiteDaUltimaVisita(DataDaLinha dataDaVisita, DataDaLinha dataDoIp) {
 		long diferenteEmMinutos = dataDaVisita.diferenteEmMinutos(dataDoIp);
 		return diferenteEmMinutos > intervaloEmMinutos;
 	}
 
-	private void adicionaVisitanteEDataDaVisita(IpVisitante ip, Data dataDoIp) {
+	private void adicionaVisitanteEDataDaVisita(IpVisitanteDaLinha ip, DataDaLinha dataDoIp) {
 		visitasFeitas.put(ip.getIp(), dataDoIp);
 		visitasDistintas ++;
 	}

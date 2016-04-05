@@ -1,10 +1,10 @@
 package programa.entidades;
 
-public final class IpVisitante {
+public final class IpVisitanteDaLinha {
 
 	private final String ip;
 	
-	public IpVisitante(String dadoBruto) {
+	public IpVisitanteDaLinha(String dadoBruto) {
 		this.ip = extrairIpVisitanteDoDadoBruto(dadoBruto);
 	}
 

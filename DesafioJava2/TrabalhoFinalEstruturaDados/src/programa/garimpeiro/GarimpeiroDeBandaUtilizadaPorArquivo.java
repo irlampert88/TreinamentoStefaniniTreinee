@@ -16,7 +16,6 @@ public class GarimpeiroDeBandaUtilizadaPorArquivo
 	
 	public GarimpeiroDeBandaUtilizadaPorArquivo() {
 		super("Banda total utilizada para cada tipo de arquivo:");
-		
 		contadorDeBandaPorArquivo = new MapaContador();
 	}
 	
@@ -27,7 +26,6 @@ public class GarimpeiroDeBandaUtilizadaPorArquivo
         dadoTamanho = dadoTamanho.substring(0, dadoTamanho.indexOf( " " ));
 
         String tipo = "n/a";
-        Double tamanho = 0.0;
 
         if (dadoTipo.contains(".png")) {
             tipo = "PNG";
@@ -48,13 +46,9 @@ public class GarimpeiroDeBandaUtilizadaPorArquivo
         }
 
         if (!tipo.equals("n/a")) {
-            if (buscaTamanho(dadoTamanho) != null) {
-                tamanho = buscaTamanho(dadoTamanho);
-                
-                tamanho = (tamanho / 1024) / 1024;
-                
-                contadorDeBandaPorArquivo.put(tipo, tamanho);
-            }
+            Double tamanhoDaBanda = buscaTamanho(dadoTamanho);
+            if (tamanhoDaBanda != null)
+                contadorDeBandaPorArquivo.put(tipo, ((tamanhoDaBanda / 1024) / 1024));
         }
     }
 
@@ -69,9 +63,8 @@ public class GarimpeiroDeBandaUtilizadaPorArquivo
 
 	@Override
 	void formatarInformacoesColetadas(FormatadorDeResultadoDoGarimpo formatadorResultados) {
-		for (String valor : contadorDeBandaPorArquivo.retornarValoresEmOrdemDecrescente(contadorDeBandaPorArquivo.quantidadeDeDados())) {
-            formatadorResultados.adicionaInformacao(valor);
-        }
+		contadorDeBandaPorArquivo.retornarValoresEmOrdemDecrescente(contadorDeBandaPorArquivo.quantidadeDeDados())
+			.forEach(valor -> formatadorResultados.adicionaInformacao(valor));
 	}
 	
 }
