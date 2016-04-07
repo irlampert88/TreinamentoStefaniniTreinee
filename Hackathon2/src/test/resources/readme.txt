@@ -1,1 +1,0 @@
-recursos (configs, imagens etc) para testes
