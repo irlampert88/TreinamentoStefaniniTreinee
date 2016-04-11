@@ -10,7 +10,8 @@ import javax.persistence.EntityManager;
 
 import com.stefanini.hackathon2.util.Mensageiro;
 
-@Interceptor @Transacional
+@Interceptor 
+@Transacional
 public class TransacionalInterceptor implements Serializable {
 
 	private static final long serialVersionUID = 1L;
