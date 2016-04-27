@@ -23,6 +23,11 @@ public class LivroServico {
 	}
 
 	@Transacional
+	public Livro pesquisarPorID(Integer id) {
+		return repositorio.pesquisarPorID(id);
+	}
+	
+	@Transacional
 	public List<Livro> carregaTodosLivrosDoBanco() {
 		return repositorio.todosLivros();
 	}
