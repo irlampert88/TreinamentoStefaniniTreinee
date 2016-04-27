@@ -38,8 +38,11 @@
 						
 						</p:panelGrid>
 					
-						<p:commandButton value="Salvar" process="@form" update="@form tabelaDeLivros" action="#{livroManagedBean.salvar()}" icon="fa fa-fw fa-save" />
-						<p:commandButton value="Limpar" process="@this" update="@form" action="#{livroManagedBean.limpar()}" icon="fa fa-fw fa-eraser" />
+						<p:commandButton value="Salvar" process="@form" update="@form tabelaDeLivros" 
+							action="#{livroManagedBean.salvar()}" icon="fa fa-fw fa-save" />
+						
+						<p:commandButton value="Limpar" process="@this" update="@form" 
+							action="#{livroManagedBean.limpar()}" icon="fa fa-fw fa-eraser" />
 					</h:form>
 					
 					<p:dataTable id="tabelaDeLivros" var="livro" value="#{livroManagedBean.listaDeLivrosCadastrados}"
@@ -57,8 +60,11 @@
 				    	    <h:outputText value="#{livro.paginas}" />
 					    </p:column>
 					    <p:column headerText="Ações" style="text-align: center">
-					    	<p:commandButton icon="fa fa-fw fa-edit" title="Editar Livro" update="livroForm" action="#{livroManagedBean.setLivro(livro)}" />
-					    	<p:commandButton icon="fa fa-fw fa-trash" title="Deletar Livro" update="tabelaDeLivros livroForm" action="#{livroManagedBean.deletar(livro)}">
+					    	<p:commandButton icon="fa fa-fw fa-edit" title="Editar Livro" update="livroForm" 
+					    		action="#{livroManagedBean.setLivro(livro)}" />
+					    	
+					    	<p:commandButton icon="fa fa-fw fa-trash" title="Deletar Livro" update="tabelaDeLivros livroForm" 
+					    		action="#{livroManagedBean.deletar(livro)}">
 					    		<p:confirm header="Confirmação" message="Deseja deletar o Livro?" icon="ui-icon-alert" />
 					    	</p:commandButton>
 					    	

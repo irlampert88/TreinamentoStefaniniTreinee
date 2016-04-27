@@ -18,6 +18,7 @@ public class LivroRepositorio {
 	}
 
 	public List<Livro> todosLivros() {
+		entityManager.getTransaction().begin();
 		return entityManager.createQuery("select l from " + Livro.class.getSimpleName() + " l").getResultList();
 	}
 	
